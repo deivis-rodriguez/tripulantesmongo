@@ -2,6 +2,7 @@ package edu.mintic.tripulantesmongo.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ import edu.mintic.tripulantesmongo.repository.RoleRepository;
 import edu.mintic.tripulantesmongo.repository.UsuarioRepository;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class AuthController {
 
     private UsuarioRepository usuarioRepository;
