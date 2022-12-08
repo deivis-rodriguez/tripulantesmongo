@@ -1,11 +1,6 @@
 package edu.mintic.tripulantesmongo.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,17 +23,14 @@ public class AuthController {
 
     private UsuarioRepository usuarioRepository;
     private RoleRepository roleRepository;
-    private AuthenticationManager authenticationManager;
     private JwtUtils jwtUtils;
     private PasswordEncoder enconder;
     private UserDetailsServiceImpl detailsServiceImpl;
 
-    public AuthController(UsuarioRepository usuarioRepository, RoleRepository roleRepository,
-            AuthenticationManager authenticationManager, JwtUtils jwtUtils, PasswordEncoder enconder,
+    public AuthController(UsuarioRepository usuarioRepository, RoleRepository roleRepository, JwtUtils jwtUtils, PasswordEncoder enconder,
             UserDetailsServiceImpl detailsServiceImpl) {
         this.usuarioRepository = usuarioRepository;
         this.roleRepository = roleRepository;
-        this.authenticationManager = authenticationManager;
         this.jwtUtils = jwtUtils;
         this.enconder = enconder;
         this.detailsServiceImpl = detailsServiceImpl;
