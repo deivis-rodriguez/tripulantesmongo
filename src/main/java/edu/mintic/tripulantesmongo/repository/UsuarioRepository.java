@@ -8,6 +8,6 @@ import edu.mintic.tripulantesmongo.entity.Usuario;
 
 public interface UsuarioRepository extends MongoRepository<Usuario, String> {
     Optional<Usuario> findByUsername(String username);
-    Boolean existsByUsurname(String username);
+    Boolean existsByUsername(String username);
     Boolean existsByEmail(String email);
 }

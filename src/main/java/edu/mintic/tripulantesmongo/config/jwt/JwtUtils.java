@@ -19,8 +19,7 @@ public class JwtUtils {
     private String jwtSecrect = Base64.getEncoder().encodeToString("tripulante".getBytes());
     private long fechaExp = 30 * 60 * 1000;
 
-    public String generarToken(Authentication authentication) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+    public String generarToken(UserDetailsImpl userDetails) {
 
         return Jwts.builder().setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date())

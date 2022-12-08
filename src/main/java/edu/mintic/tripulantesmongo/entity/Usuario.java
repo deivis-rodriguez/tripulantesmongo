@@ -4,12 +4,15 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Document(collection = "usuarios")
 public class Usuario {
 
     @Id
     private String id;
     private String username;
+    @JsonIgnore
     private String password;
     private String email;
     @DBRef
