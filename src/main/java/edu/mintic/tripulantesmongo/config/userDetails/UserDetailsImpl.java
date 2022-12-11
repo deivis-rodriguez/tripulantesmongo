@@ -1,8 +1,7 @@
-package edu.mintic.tripulantesmongo.config.userDetails;
+package edu.mintic.tripulantesmongo.config.userdetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import edu.mintic.tripulantesmongo.entity.Usuario;
 
 public class UserDetailsImpl implements UserDetails {
-
     private String username;
     private String password;
     private String email;
@@ -26,10 +24,9 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public static UserDetailsImpl build(Usuario usuario) {
-        List<GrantedAuthority> auth = new ArrayList<>();
-        auth.add(new SimpleGrantedAuthority(usuario.getRole().getNombre()));
-
-        return new UserDetailsImpl(usuario.getUsername(), usuario.getPassword(), usuario.getEmail(), auth);
+        ArrayList<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(usuario.getRole().getNombre()));
+        return new UserDetailsImpl(usuario.getUsername(), usuario.getPassword(), usuario.getEmail(), authorities);
     }
 
     @Override
@@ -49,22 +46,26 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
+
         return false;
     }
 
     @Override
     public boolean isAccountNonLocked() {
+
         return false;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
+
         return false;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+
+        return false;
     }
 
     public String getEmail() {
